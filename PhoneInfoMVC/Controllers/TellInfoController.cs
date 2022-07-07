@@ -9,7 +9,7 @@ namespace PhoneInfoMVC.Controllers
 
         public TellInfoController(ITellInfoRepository repo)
         {
-            repository = repo;
+            repository = repo; 
         }
 
         public ViewResult List() => View(repository.TellInfo);
