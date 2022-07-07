@@ -6,11 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<ITellInfoRepository, FakeTellInfo>();
 builder.Services.AddMvc();
+builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
 
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+//Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -25,8 +26,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseMvc(routes =>
+{
+    routes.MapRoute(
+     name: "default",
+     template: "{controller=TellInfo}/{action=List}/{id?}");
+});
+    
 
 app.Run();
