@@ -1,6 +1,13 @@
 using PhoneInfoMVC.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigurationManager configuration = builder.Configuration; 
+
+IWebHostEnvironment environment = builder.Environment;
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

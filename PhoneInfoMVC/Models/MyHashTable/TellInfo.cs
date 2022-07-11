@@ -2,7 +2,7 @@
 {
     public partial class HashTable
     {
-        public struct TInfo
+        public class TInfo
         {
             public string phone;
             public string fio;

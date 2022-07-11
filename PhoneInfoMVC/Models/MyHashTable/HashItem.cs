@@ -2,7 +2,7 @@
 {
     public partial class HashTable
     {
-        struct THashItem
+        class THashItem
         {
             public TInfo info;
             public bool empty;
