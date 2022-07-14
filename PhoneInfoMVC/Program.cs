@@ -14,6 +14,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<ITellInfoRepository, FakeTellInfo>();
 builder.Services.AddMvc();
 builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
+string conString = configuration["Data:ConnectionStrings:TellInfoRepo"];
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(conString));
 
 
 var app = builder.Build();
